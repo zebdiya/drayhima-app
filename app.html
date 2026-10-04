@@ -538,7 +538,7 @@ var ICO={D:'M3 11l9-8 9 8M5 10v10h5v-6h4v6h5V10',Q:'M12 22a10 10 0 1 0 0-20 10 1
 function icoSvg(k){return '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="'+(ICO[k]||'M12 12h.01')+'"/></svg>'}
 
 function buildNav(){var nv=document.getElementById('nav');[].slice.call(nv.querySelectorAll('.gh,.gb')).forEach(function(e){e.remove()});var NC={};try{NC=JSON.parse(localStorage.getItem('drnav'))||{}}catch(e){}
-var NG=[['الرئيسية','DYQ'],['العملاء والعقود','TCU'],['الحسابات اليومية','REWX'],['البنك','BM'],['الهيوج','H'],['الرواتب والمالك','SO'],['التقارير','JFVLgjIP'],['النظام','NZAKG']];
+var NG=[['الرئيسية','DYQ'],['العملاء والعقود','TCU'],['الحسابات اليومية','REWX'],['البنك','BM'],['الهيوج','H'],['الرواتب والمالك','SO'],['التقارير','PIJFV'],['الدفاتر المحاسبية','jgL'],['النظام','NZAKG']];
 NG.forEach(function(g,gi){var h=document.createElement('div'),bx=document.createElement('div');h.className='gh';bx.className='gb';bx.id='gb'+gi;h.innerHTML='<span>'+g[0]+'</span><i>▾</i>';if(NC[gi])bx.classList.add('c'),h.classList.add('c');h.onclick=function(){var c=bx.classList.toggle('c');h.classList.toggle('c',c);NC[gi]=c?1:0;try{localStorage.setItem('drnav',JSON.stringify(NC))}catch(e){}};nv.appendChild(h);nv.appendChild(bx);g[1].split('').forEach(function(k){if(!NV[k])return;var b=document.createElement('button');b.innerHTML=icoSvg(k)+'<span>'+NV[k].replace(/^\S+\s/,'')+'</span>';b.dataset.v=k;b.dataset.g=gi;b.onclick=function(){go(k,1)};bx.appendChild(b)})})}
 
 buildNav();
@@ -620,7 +620,7 @@ return '<div class="np"><button class="btn g" onclick="go(\'U\',1)">→ رجوع
 (function(){var btn='<div class="np" style="margin:0 0 10px"><button class="btn g" onclick="go(\'k\',1)">⚡ فواتير كهرباء الملاحق</button></div>';['U','Y'].forEach(function(k){var o=views[k];views[k]=function(){var h=o(),i=h.indexOf('</h2>');return i<0?btn+h:h.slice(0,i+5)+btn+h.slice(i+5)}})})();
 
 /* ===== تحديث التطبيق من داخل الإعدادات (نسخة سطح المكتب فقط) ===== */
-var APPV='2026-10-04 v38';
+var APPV='2026-10-04 v39';
 var UPU='https://raw.githubusercontent.com/zebdiya/drayhima-app/main/app.html';try{UPU=localStorage.getItem('drupu')||UPU}catch(e){}
 var G1=views.G;
 views.G=function(){var h=G1();if(!window.desktop)return h;return h+'<div class="card np"><b>تحديث البرنامج</b><p class="fine" style="margin:6px 0 10px">الإصدار الحالي: <b dir="ltr" style="unicode-bidi:isolate">'+esc(APPV)+'</b>. عندما أرسل لك ملف تحديث جديد (برنامج-الدريهيمة.html) نزّله ثم اضغط الزر واختره. تبقى بياناتك كما هي.</p><div class="f" style="margin-bottom:10px"><label>رابط التحديث عبر الإنترنت<input class="in" id="updu" dir="ltr" placeholder="https://raw.githubusercontent.com/.../app.html" value="'+esc(UPU)+'" onchange="updSaveUrl(this.value)"></label></div><div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px"><button class="btn" onclick="updNow()">تحديث الآن</button></div><div style="display:flex;gap:8px;flex-wrap:wrap"><label class="btn g" style="cursor:pointer">أو اختيار ملف تحديث<input type="file" accept=".html,text/html" style="display:none" onchange="updPick(this)"></label><button class="btn g" onclick="updReset()">الرجوع إلى النسخة الأصلية</button></div><div id="updm" class="fine" style="margin-top:8px"></div></div>'};
